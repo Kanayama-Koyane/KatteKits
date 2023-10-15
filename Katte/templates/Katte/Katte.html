@@ -1,0 +1,40 @@
+<h1>Katte!</h1>
+{% if KatteList %}
+	<table>
+	{% for Katte in KatteList %}
+		<tr>
+			<td>{{Katte.Nani}}</td>
+			<form method = "POST">
+				{% csrf_token %}
+			<td>
+				{{KattaForm.Dokode}}
+			</td>
+			<td>
+				{{KattaForm.Ikura}}
+			</td>
+			<td>
+				<button name = "Katta_{{Katte.id}}" type = "submit">Katta!</button>
+			</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>　</p>
+			</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>かって　ほしい　ものは　ありません。</p>
+{% endif %}
+	<form method = "POST">
+		<p>
+			{% csrf_token %}
+			{{KatteForm}}
+			<button name="Katte" type = "submit">Katte!</button>
+		</p>
+	</form>
+	<p><a href = "{% url 'Katte:Home' %}">KatteKits</a></p>
+	<p><a href = "{% url 'Katte:KattaLog' %}">KattaLog</a></p>
+	<p><a href = "{% url 'Katte:Dokode'%}">Dokode?</a></p>
+	

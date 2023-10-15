@@ -1,0 +1,27 @@
+<h1>Dokode?</h1>
+	{% if DokodeList %}
+		<table>
+			<thead>
+				<tl>
+					<td>Dokode</td>
+					<td>Dokosore</td>
+				</tl>
+			</thead>
+			<tbody>
+				{% for Dokode in DokodeList%}
+					<tr>
+						<td>{{Dokode.Doko}}</td>
+						<td>{{Dokode.Dokosore}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>	
+	{% else %}
+		<p>かいもの　ばしょが　まだ　ありません。</p>
+	{% endif %}
+<form method = "POST">
+{% csrf_token %}
+	{{DokodeForm}}<button name="Add" type = "submit">Add!</button>
+</form>
+<p><a href = "{% url 'Katte:Home' %}">KatteKits</a></p>
+<p><a href = "{% url 'Katte:Katte' %}">Katte!</a></p>

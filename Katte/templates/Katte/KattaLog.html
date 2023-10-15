@@ -1,0 +1,29 @@
+<h1>KattaLog</h1>
+{% if KattaList %}
+<table>
+	<thead>
+		<tr>
+			<td>Nanji</td>
+			<td>Nani</td>
+			<td>Dokode</td>
+			<td>Ikura</td>
+			<td>Dare</td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for Katta in KattaList %}
+		<tr>
+			<td>{{Katta.Nanji}}</td>
+			<td>{{Katta.Nani}}</td>
+			<td>{{Katta.Dokode}}</td>
+			<td>{{Katta.Ikura}}</td>
+			<td>{{Katta.Dare}}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% else %}
+<p>かった　ものは　ありません。</p>
+{% endif %}
+<a href = "{% url 'Katte:Home' %}">KatteKits</a>
+<a href = "{% url 'Katte:Katte' %}">Katte!</a>
