@@ -1,29 +1,34 @@
+<header>
+{% load static %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js" id = "chart"></script>
+<script type = "application/json" id = "KattaLog">{{KattaDict | safe}}</script>
+<script src = "{% static 'js/KattaLog.js' %}"></script>
+</header>
 <h1>KattaLog</h1>
 {% if KattaList %}
-<table>
-	<thead>
-		<tr>
-			<td>Nanji</td>
-			<td>Nani</td>
-			<td>Dokode</td>
-			<td>Ikura</td>
-			<td>Dare</td>
-		</tr>
-	</thead>
-	<tbody>
-	{% for Katta in KattaList %}
-		<tr>
-			<td>{{Katta.Nanji}}</td>
-			<td>{{Katta.Nani}}</td>
-			<td>{{Katta.Dokode}}</td>
-			<td>{{Katta.Ikura}}</td>
-			<td>{{Katta.Dare}}</td>
-		</tr>
-	{% endfor %}
-	</tbody>
-</table>
+<p>デイリーグラフ</p>
+<select id="years_dayly" onchange="change_year_option_dayly()">年</select>
+<select id="months_dayly" onchange="change_months_option_dayly()">月</select>
+<br>
+<canvas id = "DaylyGraph" width="300" height="300"></canvas>
+<br>
+<p>Dokode？</p>
+<select id="years_pie" onchange="set_year_optoin_pie()"></select>
+<select id="months_pie" onchange="change_months_option_pie()"></select>
+<br>
+<canvas id = "PieGraph" width = "300" height = "300"></canvas>
+<p>マンスリーグラフ</p>
+<p><select id = "years_monthly" onchange = "change_year_option_monthly()"></select>
+<select id = "months_monthly" onchange = "change_months_option_monthly()"></select>
+まで</p>
+<br>
+<canvas id = "MonthlyGraph" width = "300" height = "300"></canvas>
+<br>
+<table id="KattaTable"></table>
 {% else %}
 <p>かった　ものは　ありません。</p>
 {% endif %}
+
+<br>
 <a href = "{% url 'Katte:Home' %}">KatteKits</a>
 <a href = "{% url 'Katte:Katte' %}">Katte!</a>
